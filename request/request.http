@@ -1,0 +1,6 @@
+@baseUrl = http://localhost:3000/
+@contentType = application/json
+
+### Get blogs with pagination
+GET {{baseUrl}}api/question
+Content-Type: {{contentType}}
