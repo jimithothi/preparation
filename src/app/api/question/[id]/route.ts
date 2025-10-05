@@ -6,12 +6,13 @@ import Question from "@/models/question.model";
 import { mongoIdSchema, updateQuestionSchema } from "../question.validation";
 
 export const PUT = withAuth(
-  async (req: AuthenticatedRequest, { params }: { params: { id: string } }) => {
+  async (req: AuthenticatedRequest, context: { params: Promise<{ id: string }> }) => {
     try {
       await connectDB();
+      const { id } = await context.params;
 
       // 1️⃣ Validate MongoDB ObjectId
-      const idValidation = mongoIdSchema.safeParse(params.id);
+      const idValidation = mongoIdSchema.safeParse(id);
       if (!idValidation.success) {
         return errorResponse(
           "Invalid question ID format",
@@ -28,7 +29,7 @@ export const PUT = withAuth(
         return errorResponse("Validation error", 400, errors);
       }
       const updatedQuestion = await Question.findByIdAndUpdate(
-        params.id,
+        id,
         parsed.data,
         { new: true, runValidators: true },
       );
