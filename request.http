@@ -21,3 +21,60 @@ Content-Type: application/json
 ### GET Users
 GET http://localhost:3000/api/users
 Content-Type: application/application/json
+
+
+
+### GET Questions
+GET http://localhost:3000/api/questions
+Content-Type: application/application/json
+
+
+### CREATE Question
+POST http://localhost:3000/api/question
+Content-Type: application/application/json
+
+{
+  "question": "What is the difference between Promise.all and Promise.race?",
+  "answer": "Promise.all waits for all promises to resolve or reject, returning an array of results. Promise.race returns as soon as the first promise settles, with that promise's value or rejection reason.",
+  "category": "Technical",
+  "tags": ["javascript", "promises", "async"]
+}
+
+### PUT Question
+PUT http://localhost:3000/api/question/68e2c713333cc9b553ed8104
+Content-Type: application/application/json
+
+{
+  "question": "What is the difference between let, const, and var in JavaScript?",
+  "answer": "var is function-scoped and can be redeclared. let is block-scoped and cannot be redeclared. const is block-scoped, cannot be redeclared, and cannot be reassigned (though objects/arrays it points to can be mutated).",
+  "category": "Technical",
+  "tags": ["javascript", "es6", "variables"]
+}
+
+
+### BULK CREATE Question
+POST http://localhost:3000/api/question/bulk
+Content-Type: application/application/json
+
+{
+  "questions": [
+    {
+      "question": "What is the difference between SQL and NoSQL databases?",
+      "answer": "SQL databases are relational with structured schemas and use SQL for queries. NoSQL databases are non-relational, schema-flexible, and optimized for specific data models like documents, key-value, or graphs.",
+      "category": "Technical",
+      "tags": ["databases", "sql", "nosql"]
+    },
+    {
+      "question": "Explain the concept of RESTful API design",
+      "answer": "RESTful APIs follow REST principles using HTTP methods (GET, POST, PUT, DELETE), stateless communication, and resource-based URLs. They use standard status codes and typically return JSON data.",
+      "category": "Technical",
+      "tags": ["api", "rest", "backend"]
+    },
+    {
+      "question": "What is the purpose of Git branching?",
+      "answer": "Git branching allows developers to create isolated workspaces for features or fixes without affecting the main codebase. Branches can be merged back once work is complete, enabling parallel development and safer experimentation.",
+      "category": "Technical",
+      "tags": ["git", "version-control", "collaboration"]
+    }
+  ]
+}

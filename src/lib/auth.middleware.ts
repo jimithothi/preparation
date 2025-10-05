@@ -11,12 +11,22 @@ export interface AuthenticatedRequest extends NextRequest {
   };
 }
 
-export function withAuth(
-  handler: (req: AuthenticatedRequest) => Promise<NextResponse>,
+// Generic type for route context (includes params, etc.)
+type RouteContext<T = any> = {
+  params: T;
+};
+
+// Updated withAuth to support params
+export function withAuth<T = any>(
+  handler: (
+    req: AuthenticatedRequest,
+    context: RouteContext<T>,
+  ) => Promise<NextResponse>,
 ) {
-  return async (req: NextRequest) => {
+  return async (req: NextRequest, context: RouteContext<T>) => {
     try {
       console.log("Call Middleware");
+
       // 1️⃣ Check Authorization header
       const authHeader = req.headers.get("authorization");
       let token: string | null = null;
@@ -27,7 +37,9 @@ export function withAuth(
         // 2️⃣ Fallback: check cookie
         token = req.cookies.get("token")?.value || null;
       }
+
       console.log(token);
+
       // No token found
       if (!token) {
         return errorResponse("Unauthorized - No token provided", 401);
@@ -43,8 +55,8 @@ export function withAuth(
       const authenticatedReq = req as AuthenticatedRequest;
       authenticatedReq.user = decoded as any;
 
-      // Call the actual handler
-      return await handler(authenticatedReq);
+      // Call the actual handler with context (params)
+      return await handler(authenticatedReq, context);
     } catch (err) {
       return errorResponse("Authentication error", 401, err);
     }
