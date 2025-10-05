@@ -6,7 +6,10 @@ import Question from "@/models/question.model";
 import { mongoIdSchema, updateQuestionSchema } from "../question.validation";
 
 export const PUT = withAuth(
-  async (req: AuthenticatedRequest, context: { params: Promise<{ id: string }> }) => {
+  async (
+    req: AuthenticatedRequest,
+    context: { params: Promise<{ id: string }> },
+  ) => {
     try {
       await connectDB();
       const { id } = await context.params;
