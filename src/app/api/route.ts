@@ -53,7 +53,7 @@ export const GET = async (req: NextRequest) => {
   } catch (err) {
     return new NextResponse(
       `<h1>Server Error</h1><p>${(err as Error).message}</p>`,
-      { status: 500, headers: { "Content-Type": "text/html" } }
+      { status: 500, headers: { "Content-Type": "text/html" } },
     );
   }
 };
