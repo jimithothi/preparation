@@ -25,8 +25,6 @@ export function withAuth<T = any>(
 ) {
   return async (req: NextRequest, context: RouteContext<T>) => {
     try {
-      console.log("Call Middleware");
-
       // 1️⃣ Check Authorization header
       const authHeader = req.headers.get("authorization");
       let token: string | null = null;
@@ -37,8 +35,6 @@ export function withAuth<T = any>(
         // 2️⃣ Fallback: check cookie
         token = req.cookies.get("token")?.value || null;
       }
-
-      console.log(token);
 
       // No token found
       if (!token) {

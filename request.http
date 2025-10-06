@@ -25,7 +25,7 @@ Content-Type: application/application/json
 
 
 ### GET Questions
-GET http://localhost:3000/api/questions
+GET http://localhost:3000/api/questions?tags=javascript,api
 Content-Type: application/application/json
 
 
