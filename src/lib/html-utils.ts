@@ -16,11 +16,11 @@ export function escapeHtmlInCodeBlocks(htmlContent: string): string {
   return htmlContent.replace(codeBlockRegex, (match, tagName, content) => {
     // Escape HTML entities within the content
     const escapedContent = content
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#39;');
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
 
     return `<${tagName}>${escapedContent}</${tagName}>`;
   });
@@ -37,9 +37,9 @@ export function unescapeHtmlInCodeBlocks(htmlContent: string): string {
   return htmlContent.replace(codeBlockRegex, (match, tagName, content) => {
     // Unescape HTML entities within the content
     const unescapedContent = content
-      .replace(/&amp;/g, '&')
-      .replace(/&lt;/g, '<')
-      .replace(/&gt;/g, '>')
+      .replace(/&amp;/g, "&")
+      .replace(/&lt;/g, "<")
+      .replace(/&gt;/g, ">")
       .replace(/&quot;/g, '"')
       .replace(/&#39;/g, "'");
 

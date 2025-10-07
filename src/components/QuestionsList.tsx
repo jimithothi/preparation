@@ -248,7 +248,9 @@ export default function QuestionsList({
               <div className="px-5 py-4">
                 <div
                   className="text-gray-700 leading-relaxed answer-content"
-                  dangerouslySetInnerHTML={{ __html: escapeHtmlInCodeBlocks(q.answer) }}
+                  dangerouslySetInnerHTML={{
+                    __html: escapeHtmlInCodeBlocks(q.answer),
+                  }}
                 />
               </div>
 
