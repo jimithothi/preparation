@@ -15,7 +15,8 @@ type Question = {
 // Fetch questions on the server
 async function getQuestions(): Promise<Question[]> {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000/api";
+    const baseUrl =
+      process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000/api";
     const response = await fetch(`${baseUrl}/questions`, {
       next: { revalidate: 60 }, // ISR: Revalidate every 60 seconds
     });
@@ -60,7 +61,8 @@ export default async function Home() {
             Interview Questions
           </h1>
           <p className="text-base text-gray-600 max-w-2xl mx-auto">
-            Browse through our curated collection of technical interview questions
+            Browse through our curated collection of technical interview
+            questions
           </p>
         </div>
 
@@ -72,7 +74,9 @@ export default async function Home() {
                 <div className="animate-spin rounded-full h-12 w-12 border-4 border-blue-200"></div>
                 <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-blue-600 absolute top-0 left-0"></div>
               </div>
-              <p className="mt-3 text-gray-600 font-medium">Loading questions...</p>
+              <p className="mt-3 text-gray-600 font-medium">
+                Loading questions...
+              </p>
             </div>
           }
         >

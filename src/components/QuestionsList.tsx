@@ -16,7 +16,9 @@ type QuestionsListProps = {
   initialQuestions: Question[];
 };
 
-export default function QuestionsList({ initialQuestions }: QuestionsListProps) {
+export default function QuestionsList({
+  initialQuestions,
+}: QuestionsListProps) {
   const [questions, setQuestions] = useState<Question[]>(initialQuestions);
   const [searchTags, setSearchTags] = useState<string>("");
   const [searchCategory, setSearchCategory] = useState<string>("");
@@ -26,7 +28,7 @@ export default function QuestionsList({ initialQuestions }: QuestionsListProps) 
   const filteredQuestions = questions.filter((q) => {
     const matchesTags = searchTags
       ? q.tags.some((tag) =>
-          tag.toLowerCase().includes(searchTags.toLowerCase())
+          tag.toLowerCase().includes(searchTags.toLowerCase()),
         )
       : true;
 
@@ -145,7 +147,11 @@ export default function QuestionsList({ initialQuestions }: QuestionsListProps) 
             </span>
             {searchTags && (
               <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
-                <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                <svg
+                  className="w-3 h-3"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
                   <path
                     fillRule="evenodd"
                     d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z"
@@ -157,7 +163,11 @@ export default function QuestionsList({ initialQuestions }: QuestionsListProps) 
             )}
             {searchCategory && (
               <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
-                <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                <svg
+                  className="w-3 h-3"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
                   <path d="M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" />
                 </svg>
                 Category: {searchCategory}
@@ -165,7 +175,11 @@ export default function QuestionsList({ initialQuestions }: QuestionsListProps) 
             )}
             {searchQuestion && (
               <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-800">
-                <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                <svg
+                  className="w-3 h-3"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
                   <path
                     fillRule="evenodd"
                     d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
