@@ -49,7 +49,7 @@ export async function POST(req: Request) {
     });
 
     return successResponse(
-      { userId: user._id, email: user.email, token: token },
+      { _id: user._id, email: user.email, token: token },
       "Login successful",
       200,
       { headers: { "Set-Cookie": cookie } },
