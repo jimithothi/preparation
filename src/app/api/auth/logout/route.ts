@@ -16,14 +16,10 @@ export async function POST(req: Request) {
       { message: "Logged out successfully" },
       "Logout successful",
       200,
-      { headers: { "Set-Cookie": cookie } }
+      { headers: { "Set-Cookie": cookie } },
     );
   } catch (err) {
     console.error("Logout API ERROR:", err);
-    return successResponse(
-      { message: "Logged out" },
-      "Logout completed",
-      200
-    );
+    return successResponse({ message: "Logged out" }, "Logout completed", 200);
   }
 }

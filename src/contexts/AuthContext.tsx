@@ -28,7 +28,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     // Check if user is logged in (check cookie)
     const storedUser = getCookie("user");
-    
+
     // Note: The 'token' cookie is HttpOnly (set by server), so we can't access it here
     // We only check if user data exists
     if (storedUser) {
@@ -60,7 +60,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
       const result = await response.json();
       console.log("Login response:", result); // Debug log
-      
+
       const userData = {
         id: result.data._id,
         email: result.data.email,
@@ -68,10 +68,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       };
 
       setUser(userData);
-      
+
       // Store only user data in cookie (token is already set by server as HttpOnly)
       setCookie("user", JSON.stringify(userData), 1);
-      
+
       // Use window.location for more reliable redirect
       window.location.href = "/dashboard";
     } catch (error) {
@@ -94,7 +94,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       // Clear client-side data
       setUser(null);
       deleteCookie("user");
-      
+
       // Redirect to login
       window.location.href = "/login";
     }

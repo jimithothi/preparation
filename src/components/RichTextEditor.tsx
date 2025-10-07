@@ -37,7 +37,7 @@ export default function RichTextEditor({
       textarea.focus();
       textarea.setSelectionRange(
         start + openTag.length,
-        start + openTag.length + selectedText.length
+        start + openTag.length + selectedText.length,
       );
     }, 0);
   };
@@ -140,7 +140,9 @@ export default function RichTextEditor({
         />
       )}
 
-      {error && <p className="px-4 py-2 text-sm text-red-600 bg-red-50">{error}</p>}
+      {error && (
+        <p className="px-4 py-2 text-sm text-red-600 bg-red-50">{error}</p>
+      )}
 
       {/* Help Text */}
       <div className="bg-gray-50 border-t border-gray-300 px-4 py-2">

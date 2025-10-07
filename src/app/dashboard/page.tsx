@@ -35,7 +35,10 @@ const questionSchema = Yup.object({
     .required("At least one tag is required")
     .test("has-tags", "Please enter at least one tag", (value) => {
       if (!value) return false;
-      const tags = value.split(",").map((t) => t.trim()).filter(Boolean);
+      const tags = value
+        .split(",")
+        .map((t) => t.trim())
+        .filter(Boolean);
       return tags.length > 0;
     }),
 });
@@ -91,7 +94,7 @@ export default function Dashboard() {
         setSuccess(
           editingId
             ? "Question updated successfully!"
-            : "Question created successfully!"
+            : "Question created successfully!",
         );
 
         resetForm();
@@ -105,7 +108,6 @@ export default function Dashboard() {
       }
     },
   });
-
 
   const fetchQuestions = async () => {
     try {
@@ -157,7 +159,9 @@ export default function Dashboard() {
               </div>
               <div className="flex items-center gap-4">
                 <div className="text-right">
-                  <p className="text-sm font-medium text-gray-900">{user?.name}</p>
+                  <p className="text-sm font-medium text-gray-900">
+                    {user?.name}
+                  </p>
                   <p className="text-xs text-gray-500">{user?.email}</p>
                 </div>
                 <button
@@ -290,7 +294,9 @@ export default function Dashboard() {
                     placeholder="e.g., javascript, api, react"
                   />
                   {formik.touched.tags && formik.errors.tags && (
-                    <p className="mt-1 text-sm text-red-600">{formik.errors.tags}</p>
+                    <p className="mt-1 text-sm text-red-600">
+                      {formik.errors.tags}
+                    </p>
                   )}
                   <p className="mt-1 text-xs text-gray-500">
                     Separate tags with commas
