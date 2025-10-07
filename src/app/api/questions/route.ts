@@ -4,7 +4,7 @@ import type { AuthenticatedRequest } from "@/lib/auth.middleware";
 import { withAuth } from "@/lib/auth.middleware";
 import Question from "@/models/question.model";
 type QuestionFilter = Record<string, unknown>;
-export const GET = withAuth(async (req: AuthenticatedRequest) => {
+export const GET = async (req: AuthenticatedRequest) => {
   try {
     await connectDB();
 
@@ -41,7 +41,8 @@ export const GET = withAuth(async (req: AuthenticatedRequest) => {
       `Questions retrieved successfully (${questions.length} found)`,
       200,
     );
-  } catch (err) {
-    return errorResponse("Server error", 500, err);
+  } catch (err) {    
+    console.error("Questions API ERROR:", err);
+    return errorResponse("Questions API ERROR:", 500, err);
   }
-});
+};

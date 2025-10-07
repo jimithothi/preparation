@@ -45,7 +45,7 @@ export async function POST(req: Request) {
       "User registered successfully",
     );
   } catch (err) {
-    console.error("Register Error:", err);
-    return errorResponse("Server error", 500, err);
+    console.error("Register API ERROR:", err);
+    return errorResponse("Register API ERROR:", 500, err);
   }
 }

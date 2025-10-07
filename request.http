@@ -34,10 +34,10 @@ POST http://localhost:3000/api/question
 Content-Type: application/application/json
 
 {
-  "question": "What is the difference between Promise.all and Promise.race?",
-  "answer": "Promise.all waits for all promises to resolve or reject, returning an array of results. Promise.race returns as soon as the first promise settles, with that promise's value or rejection reason.",
+  "question": "What is the difference between SQL and NoSQL databases?",
+  "answer": "<p>SQL and NoSQL databases differ in their data structure, scalability, and use cases.</p><h3>SQL (MySQL, PostgreSQL)</h3><ul><li>Uses tables with rows and columns</li><li>Requires predefined schema</li><li>Better for complex queries and relationships</li><li>ACID compliant</li></ul><h3>NoSQL (MongoDB)</h3><ul><li>Uses collections of documents</li><li>Schema-less and flexible</li><li>Better for scalability and big data</li><li>Eventually consistent</li></ul><h3>Example: Storing User Data</h3><pre><code>// SQL (MySQL/PostgreSQL)\nCREATE TABLE users (\n  id INT PRIMARY KEY,\n  name VARCHAR(100),\n  email VARCHAR(100),\n  created_at TIMESTAMP\n);\n\nINSERT INTO users (id, name, email) VALUES (1, 'John', 'john@example.com');\n\n// NoSQL (MongoDB)\ndb.users.insertOne({\n  name: 'John',\n  email: 'john@example.com',\n  created_at: new Date()\n});</code></pre>",
   "category": "Technical",
-  "tags": ["javascript", "promises", "async"]
+  "tags": ["database"]
 }
 
 ### PUT Question

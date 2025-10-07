@@ -55,7 +55,7 @@ export async function POST(req: Request) {
       { headers: { "Set-Cookie": cookie } },
     );
   } catch (err) {
-    console.error("Login Error:", err);
-    return errorResponse("Server error", 500, err);
+    console.error("Login API ERROR:", err);
+    return errorResponse("Login API ERROR:", 500, err);
   }
 }

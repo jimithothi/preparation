@@ -18,7 +18,7 @@ export const POST = withAuth(async (req: AuthenticatedRequest) => {
     const question = await Question.create(parsed.data);
     return successResponse(question, "Question created successfully");
   } catch (err) {
-    console.error("Register Error:", err);
-    return errorResponse("Server error", 500, err);
+    console.error("Create Question API ERROR:", err);
+    return errorResponse("Create Question API ERROR:", 500, err);
   }
 });

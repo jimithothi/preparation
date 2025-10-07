@@ -43,8 +43,8 @@ export const PUT = withAuth(
 
       return successResponse(updatedQuestion, "Question updated successfully");
     } catch (err) {
-      console.error("Register Error:", err);
-      return errorResponse("Server error", 500, err);
+      console.error("Update Question API ERROR:", err);
+      return errorResponse("Update Question API ERROR:", 500, err);
     }
   },
 );

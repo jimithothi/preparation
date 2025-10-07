@@ -18,7 +18,7 @@ export const POST = withAuth(async (req: AuthenticatedRequest) => {
     const questions = await Question.insertMany(parsed.data.questions);
     return successResponse(questions, "Questions created successfully");
   } catch (err) {
-    console.error("Register Error:", err);
-    return errorResponse("Server error", 500, err);
+    console.error("Bulk Questions API ERROR:", err);
+    return errorResponse("Bulk Questions API ERROR:", 500, err);
   }
 });
