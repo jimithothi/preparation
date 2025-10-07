@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { escapeHtmlInCodeBlocks } from "@/lib/html-utils";
 
 type Question = {
   _id: string;
@@ -247,7 +248,7 @@ export default function QuestionsList({
               <div className="px-5 py-4">
                 <div
                   className="text-gray-700 leading-relaxed answer-content"
-                  dangerouslySetInnerHTML={{ __html: q.answer }}
+                  dangerouslySetInnerHTML={{ __html: escapeHtmlInCodeBlocks(q.answer) }}
                 />
               </div>
 

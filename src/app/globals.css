@@ -93,6 +93,11 @@ body {
   margin-bottom: 0.5rem;
   font-size: 0.8125rem;
   line-height: 1.3;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  word-break: break-all;
+  overflow-wrap: break-word;
+  font-family: "Consolas", "Monaco", "Andale Mono", "Ubuntu Mono", monospace;
 }
 
 .answer-content code {
