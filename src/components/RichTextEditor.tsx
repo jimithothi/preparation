@@ -1,5 +1,6 @@
 "use client";
 
+import { escapeHtmlInCodeBlocks } from "@/lib/html-utils";
 import { useState, useRef } from "react";
 
 type RichTextEditorProps = {
@@ -126,7 +127,7 @@ export default function RichTextEditor({
         <div className="p-4 min-h-[200px] bg-white">
           <div
             className="answer-content"
-            dangerouslySetInnerHTML={{ __html: value }}
+            dangerouslySetInnerHTML={{ __html: escapeHtmlInCodeBlocks(value) }}
           />
         </div>
       ) : (

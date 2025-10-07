@@ -34,7 +34,7 @@ export const GET = async (req: AuthenticatedRequest) => {
     }
 
     // Execute query with filters
-    const questions = await Question.find(filter).sort({ createdAt: -1 });
+    const questions = await Question.find(filter).sort({ createdAt: 1 });
 
     return successResponse(
       questions,

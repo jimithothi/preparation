@@ -18,7 +18,7 @@ async function getQuestions(): Promise<Question[]> {
     const baseUrl =
       process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000/api";
     const response = await fetch(`${baseUrl}/questions`, {
-      next: { revalidate: 60 }, // ISR: Revalidate every 60 seconds
+      next: { revalidate: 3600 }, // ISR: Revalidate every 60 seconds
     });
 
     if (!response.ok) {
