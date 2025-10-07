@@ -41,7 +41,7 @@ export const GET = async (req: AuthenticatedRequest) => {
       `Questions retrieved successfully (${questions.length} found)`,
       200,
     );
-  } catch (err) {    
+  } catch (err) {
     console.error("Questions API ERROR:", err);
     return errorResponse("Questions API ERROR:", 500, err);
   }
