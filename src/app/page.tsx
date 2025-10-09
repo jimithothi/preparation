@@ -15,8 +15,7 @@ type Question = {
 // Fetch questions on the server
 async function getQuestions(): Promise<Question[]> {
   try {
-    const baseUrl =
-      process.env.NEXT_PUBLIC_API_URL;
+    const baseUrl = process.env.NEXT_PUBLIC_API_URL;
     const response = await fetch(`${baseUrl}/questions`, {
       next: { revalidate: 3600 }, // ISR: Revalidate every 60 seconds
     });
@@ -41,14 +40,14 @@ export default async function Home() {
     <main className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto">
         {/* Header Section */}
-       <div className="border-b border-gray-200 pb-6 mb-8">
-  <h1 className="text-4xl font-semibold text-gray-900 mb-2">
-    Interview Questions
-  </h1>
-  <p className="text-gray-500">
-    Curated collection of technical interview questions
-  </p>
-</div>
+        <div className="border-b border-gray-200 pb-6 mb-8">
+          <h1 className="text-4xl font-semibold text-gray-900 mb-2">
+            Interview Questions
+          </h1>
+          <p className="text-gray-500">
+            Curated collection of technical interview questions
+          </p>
+        </div>
         {/* Client-side filtering component */}
         <Suspense
           fallback={
