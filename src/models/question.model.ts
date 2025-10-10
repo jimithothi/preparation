@@ -28,8 +28,12 @@ const QuestionSchema = new Schema(
       },
     ],
   },
-  { timestamps: true, indexes: { createdAt: 1, updatedAt: 1 } },
+  { timestamps: true },
 );
+
+// Add individual indexes
+QuestionSchema.index({ createdAt: 1 });
+QuestionSchema.index({ updatedAt: 1 });
 
 // Avoid recompiling model if already defined
 const Question = models.Question || model("Question", QuestionSchema);
