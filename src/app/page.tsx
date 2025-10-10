@@ -16,10 +16,8 @@ async function getQuestions(): Promise<Question[]> {
   try {
     const baseUrl = process.env.NEXT_PUBLIC_API_URL;
     const response = await fetch(`${baseUrl}/questions`, {
-      next: {
-        revalidate: 86400,
-        tags: ["questions"],
-      },
+      cache: "force-cache", // cache until manually revalidated
+      next: { tags: ["questions"] }, // assign a cache tag
     });
 
     if (!response.ok) {
