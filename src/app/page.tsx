@@ -1,3 +1,4 @@
+import ClientTimestamp from "@/components/ClientTimestamp";
 import QuestionsList from "@/components/QuestionsList";
 import { Suspense } from "react";
 
@@ -32,17 +33,9 @@ async function getQuestions(): Promise<Question[]> {
   }
 }
 
-// Calculate statistics from questions
-function getStatistics() {
-  return {
-    lastUpdated: new Date().toLocaleDateString(),
-  };
-}
-
 // This is now a Server Component with ISR
 export default async function Home() {
   const questions = await getQuestions();
-  const stats = getStatistics();
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 py-8 px-4 sm:px-6 lg:px-8">
@@ -59,31 +52,8 @@ export default async function Home() {
               </p>
             </div>
 
-            {/* Last Updated Badge */}
-            <div className="flex items-center gap-2 text-sm text-gray-600 bg-white px-4 py-2 rounded-lg shadow-sm border border-gray-200">
-              <svg
-                className="w-4 h-4 text-blue-500"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-              <span>
-                Time:{" "}
-                {new Date(stats.lastUpdated).toLocaleString("en-US", {
-                  month: "short",
-                  day: "numeric",
-                  hour: "2-digit",
-                  minute: "2-digit",
-                })}
-              </span>
-            </div>
+            {/* Client Time Badge */}
+            <ClientTimestamp />
           </div>
         </div>
 
