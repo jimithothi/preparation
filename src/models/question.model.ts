@@ -3,7 +3,7 @@ import { model, models, Schema } from "mongoose";
 const QuestionSchema = new Schema(
   {
     question: { type: String, required: true },
-    answer: { type: String, required: true },
+    answer: { type: String, required: true, index: true },
     category: {
       type: String,
       trim: true,
@@ -17,16 +17,18 @@ const QuestionSchema = new Schema(
       ],
       default: null,
       required: false,
+      index: true,
     },
     tags: [
       {
         type: String,
         trim: true,
         lowercase: true,
+        index: true,
       },
     ],
   },
-  { timestamps: true },
+  { timestamps: true, indexes: { createdAt: 1, updatedAt: 1 } },
 );
 
 // Avoid recompiling model if already defined
