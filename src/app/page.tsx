@@ -35,7 +35,7 @@ async function getQuestions(): Promise<Question[]> {
 // Calculate statistics from questions
 function getStatistics() {
   return {
-    lastUpdated: new Date().toISOString(),
+    lastUpdated: new Date().toLocaleDateString(),
   };
 }
 
