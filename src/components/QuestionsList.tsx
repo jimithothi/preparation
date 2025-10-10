@@ -28,9 +28,13 @@ export default function QuestionsList({
   // Client-side filtering
   const filteredQuestions = questions.filter((q) => {
     const matchesTags = searchTags
-      ? q.tags.some((tag) =>
-          tag.toLowerCase().includes(searchTags.toLowerCase()),
-        )
+      ? searchTags
+          .split(",")
+          .map((t) => t.trim().toLowerCase())
+          .filter((t) => t.length > 0)
+          .some((searchTag) =>
+            q.tags.some((tag) => tag.toLowerCase().includes(searchTag)),
+          )
       : true;
 
     const matchesCategory = searchCategory
