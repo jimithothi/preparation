@@ -4,6 +4,7 @@ import type { AuthenticatedRequest } from "@/lib/auth.middleware";
 import { withAuth } from "@/lib/auth.middleware";
 import Question from "@/models/question.model";
 import { mongoIdSchema, updateQuestionSchema } from "../question.validation";
+import { revalidatePath } from "next/cache";
 
 export const PUT = withAuth(
   async (
@@ -40,6 +41,7 @@ export const PUT = withAuth(
       if (!updatedQuestion) {
         return errorResponse("Question not found", 404);
       }
+      revalidatePath("/"); // Revalidate the homepage to reflect the updated question
 
       return successResponse(updatedQuestion, "Question updated successfully");
     } catch (err) {

@@ -4,6 +4,7 @@ import type { AuthenticatedRequest } from "@/lib/auth.middleware";
 import { withAuth } from "@/lib/auth.middleware";
 import Question from "@/models/question.model";
 import { bulkCreateSchema } from "../question.validation";
+import { revalidatePath } from "next/cache";
 
 export const POST = withAuth(async (req: AuthenticatedRequest) => {
   try {
@@ -16,6 +17,7 @@ export const POST = withAuth(async (req: AuthenticatedRequest) => {
       return errorResponse("Validation error", 400, errors);
     }
     const questions = await Question.insertMany(parsed.data.questions);
+    revalidatePath("/"); // Revalidate the homepage to reflect the updated question
     return successResponse(questions, "Questions created successfully");
   } catch (err) {
     console.error("Bulk Questions API ERROR:", err);

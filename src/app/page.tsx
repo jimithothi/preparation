@@ -1,5 +1,4 @@
 import QuestionsList from "@/components/QuestionsList";
-import Link from "next/link";
 import { Suspense } from "react";
 
 type Question = {
@@ -17,7 +16,7 @@ async function getQuestions(): Promise<Question[]> {
   try {
     const baseUrl = process.env.NEXT_PUBLIC_API_URL;
     const response = await fetch(`${baseUrl}/questions`, {
-      next: { revalidate: 3600 }, // ISR: Revalidate every 60 seconds
+      next: { revalidate: 86400 }, // ISR: Revalidate every 60 seconds
     });
 
     if (!response.ok) {

@@ -4,6 +4,7 @@ import type { AuthenticatedRequest } from "@/lib/auth.middleware";
 import { withAuth } from "@/lib/auth.middleware";
 import Question from "@/models/question.model";
 import { createQuestionSchema } from "./question.validation";
+import { revalidatePath } from "next/cache";
 
 export const POST = withAuth(async (req: AuthenticatedRequest) => {
   try {
@@ -16,6 +17,7 @@ export const POST = withAuth(async (req: AuthenticatedRequest) => {
       return errorResponse("Validation error", 400, errors);
     }
     const question = await Question.create(parsed.data);
+    revalidatePath("/"); // Revalidate the homepage to reflect the updated question
     return successResponse(question, "Question created successfully");
   } catch (err) {
     console.error("Create Question API ERROR:", err);
